@@ -1,0 +1,56 @@
+{
+  "name": "tie-logger",
+  "version": "1.0.0",
+  "description": "👔 Fully typed minimal platform-agnostic logger",
+  "main": "dist/cjs/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexXanderGrib/tie-logger.git"
+  },
+  "keywords": [
+    "logger",
+    "log",
+    "logging",
+    "json",
+    "stream",
+    "http",
+    "pretty",
+    "browser",
+    "nodejs",
+    "node",
+    "typescript",
+    "typed"
+  ],
+  "files": [
+    "dist/",
+    "src/",
+    "coverage/",
+    "examples/",
+    "index.js",
+    "index.mjs",
+    "index.d.ts",
+    "README.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE.txt",
+    "SECURITY.md",
+    "CODE_OF_CONDUCT.md"
+  ],
+  "author": "Alexander Gribochkin <me@alexxgrib.me> (https://alexxgrib.me/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexXanderGrib/tie-logger/issues"
+  },
+  "homepage": "https://github.com/AlexXanderGrib/tie-logger#readme",
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "@types/node": "4",
+    "jest": "^28.1.0",
+    "ts-jest": "^28.0.3",
+    "ts-node": "^10.8.0",
+    "typescript": "^4.7.2"
+  }
+}
