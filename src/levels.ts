@@ -13,6 +13,14 @@ type LogLevelsDefaults<L extends LogLevels> = L extends readonly []
   ? defaultLevels
   : L;
 
+/**
+ *
+ *
+ * @export
+ * @template L
+ * @param {...L} levels
+ * @return {LogLevelsDefaults<L>}  {LogLevelsDefaults<L>}
+ */
 export function logLevels<L extends LogLevels>(...levels: L): LogLevelsDefaults<L> {
   if (levels.length === 0) return defaultLevels as LogLevelsDefaults<L>;
   return levels as LogLevelsDefaults<L>;

@@ -2,6 +2,8 @@
 
 # Class: Logger<L\>
 
+**`export`**
+
 ## Type parameters
 
 | Name | Type |
@@ -35,6 +37,10 @@
 
 • **new Logger**<`L`\>(`name`, `levels`, `data?`, `parent?`)
 
+Creates an instance of Logger.
+
+**`memberof`** Logger
+
 #### Type parameters
 
 | Name | Type |
@@ -52,7 +58,7 @@
 
 #### Defined in
 
-dist/esm/logger.d.ts:23
+dist/esm/logger.d.ts:38
 
 ## Properties
 
@@ -62,7 +68,7 @@ dist/esm/logger.d.ts:23
 
 #### Defined in
 
-dist/esm/logger.d.ts:22
+dist/esm/logger.d.ts:29
 
 ___
 
@@ -72,7 +78,7 @@ ___
 
 #### Defined in
 
-dist/esm/logger.d.ts:19
+dist/esm/logger.d.ts:26
 
 ___
 
@@ -82,7 +88,7 @@ ___
 
 #### Defined in
 
-dist/esm/logger.d.ts:18
+dist/esm/logger.d.ts:25
 
 ___
 
@@ -92,7 +98,7 @@ ___
 
 #### Defined in
 
-dist/esm/logger.d.ts:21
+dist/esm/logger.d.ts:28
 
 ___
 
@@ -102,7 +108,7 @@ ___
 
 #### Defined in
 
-dist/esm/logger.d.ts:17
+dist/esm/logger.d.ts:24
 
 ___
 
@@ -112,13 +118,15 @@ ___
 
 #### Defined in
 
-dist/esm/logger.d.ts:20
+dist/esm/logger.d.ts:27
 
 ## Methods
 
 ### \_pipe
 
 ▸ `Protected` **_pipe**(`log`): `void`
+
+**`memberof`** Logger
 
 #### Parameters
 
@@ -132,13 +140,15 @@ dist/esm/logger.d.ts:20
 
 #### Defined in
 
-dist/esm/logger.d.ts:24
+dist/esm/logger.d.ts:46
 
 ___
 
 ### child
 
 ▸ **child**(`name`, `data`): [`LoggerWithParent`](../modules/internal_.md#loggerwithparent)<`L`, [`Logger`](Logger.md)<`L`\>\>
+
+**`memberof`** Logger
 
 #### Parameters
 
@@ -151,15 +161,19 @@ ___
 
 [`LoggerWithParent`](../modules/internal_.md#loggerwithparent)<`L`, [`Logger`](Logger.md)<`L`\>\>
 
+{LoggerWithParent<L, this>}
+
 #### Defined in
 
-dist/esm/logger.d.ts:25
+dist/esm/logger.d.ts:55
 
 ___
 
 ### subscribe
 
 ▸ **subscribe**(...`subscriptions`): [`Unsubscribe`](../modules/internal_.md#unsubscribe)
+
+**`memberof`** Logger
 
 #### Parameters
 
@@ -171,6 +185,8 @@ ___
 
 [`Unsubscribe`](../modules/internal_.md#unsubscribe)
 
+{Unsubscribe}
+
 #### Defined in
 
-dist/esm/logger.d.ts:26
+dist/esm/logger.d.ts:63

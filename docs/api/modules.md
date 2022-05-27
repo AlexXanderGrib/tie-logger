@@ -96,6 +96,8 @@ dist/esm/levels.d.ts:1
 
 ▸ **filter**<`L`\>(`filter`, `level`, `subscription`): [`LogSubscription`](modules.md#logsubscription)<`L`\>
 
+**`export`**
+
 #### Type parameters
 
 | Name | Type |
@@ -114,15 +116,19 @@ dist/esm/levels.d.ts:1
 
 [`LogSubscription`](modules.md#logsubscription)<`L`\>
 
+{LogSubscription<L>}
+
 #### Defined in
 
-dist/esm/logger.d.ts:28
+dist/esm/logger.d.ts:75
 
 ___
 
 ### logLevels
 
 ▸ **logLevels**<`L`\>(...`levels`): [`LogLevelsDefaults`](modules/internal_.md#loglevelsdefaults)<`L`\>
+
+**`export`**
 
 #### Type parameters
 
@@ -140,6 +146,8 @@ ___
 
 [`LogLevelsDefaults`](modules/internal_.md#loglevelsdefaults)<`L`\>
 
+{LogLevelsDefaults<L>}
+
 #### Defined in
 
-dist/esm/levels.d.ts:5
+dist/esm/levels.d.ts:13

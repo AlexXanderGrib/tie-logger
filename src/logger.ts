@@ -21,10 +21,25 @@ type LoggerWithParent<
   Pr extends Logger<Lv> = Logger<Lv>
 > = Logger<Lv> & { readonly parent: Pr };
 
+/**
+ *
+ *
+ * @export
+ * @class Logger
+ * @template L
+ */
 export class Logger<L extends LogLevels> {
   public readonly log: LogWriter<L>;
   private readonly _subscriptions = new Set<LogSubscription<L>>();
 
+  /**
+   * Creates an instance of Logger.
+   * @param {string} name
+   * @param {L} levels
+   * @param {Record<string, unknown>} [data={}]
+   * @param {Logger<L>} [parent]
+   * @memberof Logger
+   */
   constructor(
     public readonly name: string,
     public readonly levels: L,
@@ -34,6 +49,13 @@ export class Logger<L extends LogLevels> {
     this.log = createLogWriter({ log: this._pipe.bind(this) }, ...levels);
   }
 
+  /**
+   *
+   *
+   * @protected
+   * @param {(LogObject<L> | LogObjectWithContext<L>)} log
+   * @memberof Logger
+   */
   protected _pipe(log: LogObject<L> | LogObjectWithContext<L>): void {
     const logWithContext: LogObjectWithContext<L> = {
       level: log.level,
@@ -54,10 +76,25 @@ export class Logger<L extends LogLevels> {
     }
   }
 
+  /**
+   *
+   *
+   * @param {string} name
+   * @param {Record<string, unknown>} data
+   * @return {LoggerWithParent<L, this>}  {LoggerWithParent<L, this>}
+   * @memberof Logger
+   */
   child(name: string, data: Record<string, unknown>): LoggerWithParent<L, this> {
     return new Logger(name, this.levels, data, this) as LoggerWithParent<L, this>;
   }
 
+  /**
+   *
+   *
+   * @param {...Subscription<LogObjectWithContext<L>>[]} subscriptions
+   * @return {function(): void}  {Unsubscribe}
+   * @memberof Logger
+   */
   subscribe(...subscriptions: Subscription<LogObjectWithContext<L>>[]): Unsubscribe {
     for (const subscription of subscriptions) {
       this._subscriptions.add(subscription);
@@ -71,6 +108,16 @@ export class Logger<L extends LogLevels> {
   }
 }
 
+/**
+ *
+ *
+ * @export
+ * @template L
+ * @param {(">" | "<" | "=" | ">=" | "<=")} filter
+ * @param {string} level
+ * @param {LogSubscription<L>} subscription
+ * @return {*}  {LogSubscription<L>}
+ */
 export function filter<L extends LogLevels>(
   filter: ">" | "<" | "=" | ">=" | "<=",
   level: L[number],
@@ -88,6 +135,7 @@ export function filter<L extends LogLevels>(
       ">=": logValue >= targetValue
     };
 
-    if (conditions[filter]) return subscription(log);
+    const filterValue = Object.getOwnPropertyDescriptor(conditions, filter)?.value;
+    if (filterValue) return subscription(log);
   };
 }

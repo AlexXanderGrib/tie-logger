@@ -17,8 +17,8 @@ describe("Logger", () => {
     expect(logger.levels).toStrictEqual(levels);
 
     for (const level of levels) {
-      expect(logger.log[level]).toBeDefined();
-      expect(child.log[level]).toBeDefined();
+      expect(level in logger.log).toBeTruthy();
+      expect(level in child.log).toBeTruthy();
     }
 
     expect(logger.data).toStrictEqual({});
@@ -36,11 +36,11 @@ describe("Logger", () => {
     ]);
   });
 
-  test("Logging", () => {
-    function match(levels: levels[number][]): LogSubscription<levels> {
-      return (log) => expect(levels).toContain(log.level);
-    }
+  function match(levels: levels[number][]): LogSubscription<levels> {
+    return (log) => expect(levels).toContain(log.level);
+  }
 
+  test("Logging", () => {
     const unsubscribe = logger.subscribe(
       match(["log", "warn", "error"]),
       filter(">", "warn", match(["error"])),

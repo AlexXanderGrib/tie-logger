@@ -30,6 +30,15 @@ type ObjectWithName<N extends string = string> = {
   name?: N;
 };
 
+/**
+ *
+ *
+ * @export
+ * @template N
+ * @param {unknown} object
+ * @param {ObjectWithName<N>} [options={}]
+ * @return {boolean}  {object is NamedValue<N>}
+ */
 export function isNamedValue<N extends string = string>(
   object: unknown,
   /* istanbul ignore next */
@@ -48,6 +57,12 @@ export function isNamedValue<N extends string = string>(
   return true;
 }
 
+/**
+ *
+ *
+ * @param {unknown} object
+ * @return {boolean}  {object is Record<string, unknown>}
+ */
 function isComplexObject(object: unknown): object is Record<string, unknown> {
   if (typeof object !== "object" || !object) return false;
 
@@ -55,6 +70,13 @@ function isComplexObject(object: unknown): object is Record<string, unknown> {
   return keys.length > 1;
 }
 
+/**
+ *
+ *
+ * @param {TemplateStringsArray} strings
+ * @param {unknown[]} insertions
+ * @return {object}
+ */
 function processLog(strings: TemplateStringsArray, insertions: unknown[]) {
   const data: Record<string, unknown> = {};
   let template = "";
@@ -75,8 +97,10 @@ function processLog(strings: TemplateStringsArray, insertions: unknown[]) {
       if (isNamedValue(insertion, effect)) {
         const name = effect.name as string;
         template += `{${name}}`;
-        const value = insertion[name];
-        data[name] = value;
+
+        const value = Object.getOwnPropertyDescriptor(insertion, name)?.value;
+        Object.assign(data, { [name]: value });
+
         /* istanbul ignore next */
         plain += typeof value === "object" ? JSON.stringify(value) : String(value);
       } else if (isComplexObject(insertion)) {
@@ -93,6 +117,15 @@ function processLog(strings: TemplateStringsArray, insertions: unknown[]) {
   return { plain, template, data, parts: parts.filter((value) => value !== "") };
 }
 
+/**
+ *
+ *
+ * @export
+ * @template L
+ * @param {LogContext<L>} context
+ * @param {...L} levels
+ * @return {LogWriter<L>}  {LogWriter<L>}
+ */
 export function createLogWriter<L extends LogLevels>(
   context: LogContext<L>,
   ...levels: L
@@ -100,6 +133,13 @@ export function createLogWriter<L extends LogLevels>(
   const proto = {};
   const writer = {} as LogWriter<L>;
 
+  /**
+   *
+   *
+   * @param {string} level
+   * @param {TemplateStringsArray} strings
+   * @param {unknown[]} insertions
+   */
   function write(
     level: L[number],
     strings: TemplateStringsArray,
