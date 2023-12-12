@@ -24,6 +24,7 @@ export type LogObject<L extends LogLevels> = {
 
 export type LogContext<L extends LogLevels> = {
   log(value: LogObject<L>): void;
+  stringifyObject(value: unknown): string;
 };
 
 type ObjectWithName<N extends string = string> = {
@@ -72,12 +73,16 @@ function isComplexObject(object: unknown): object is Record<string, unknown> {
 
 /**
  *
- *
+ * @param {LogContext<any>} context
  * @param {TemplateStringsArray} strings
  * @param {unknown[]} insertions
  * @return {object}
  */
-function processLog(strings: TemplateStringsArray, insertions: unknown[]) {
+function processLog(
+  context: LogContext<any>,
+  strings: TemplateStringsArray,
+  insertions: unknown[]
+) {
   const data: Record<string, unknown> = {};
   let template = "";
   let plain = "";
@@ -102,11 +107,12 @@ function processLog(strings: TemplateStringsArray, insertions: unknown[]) {
         Object.assign(data, { [name]: value });
 
         /* istanbul ignore next */
-        plain += typeof value === "object" ? JSON.stringify(value) : String(value);
+        plain +=
+          typeof value === "object" ? context.stringifyObject(value) : String(value);
       } else if (isComplexObject(insertion)) {
         template += `{${Object.keys(insertion)}}`;
         Object.assign(data, insertion);
-        plain += JSON.stringify(insertion);
+        plain += context.stringifyObject(insertion);
       } else {
         template += String(insertion);
         plain += String(insertion);
@@ -145,7 +151,11 @@ export function createLogWriter<L extends LogLevels>(
     strings: TemplateStringsArray,
     insertions: unknown[]
   ) {
-    const { plain, template, data, parts } = processLog(strings, insertions);
+    const { plain, template, data, parts } = processLog(
+      context,
+      strings,
+      insertions
+    );
 
     context.log({
       level,

@@ -46,7 +46,26 @@ export class Logger<L extends LogLevels> {
     public data: Record<string, unknown> = {},
     public readonly parent?: Logger<L>
   ) {
-    this.log = createLogWriter({ log: this._pipe.bind(this) }, ...levels);
+    this.log = createLogWriter(
+      {
+        log: this._pipe.bind(this),
+        stringifyObject(value) {
+          return JSON.stringify(value, (_key, value) => {
+            if (typeof value === "bigint") {
+              const number = Number(value);
+              if (Number.isSafeInteger(number)) {
+                return number;
+              }
+
+              return String(value);
+            }
+
+            return value;
+          });
+        }
+      },
+      ...levels
+    );
   }
 
   /**
@@ -80,11 +99,14 @@ export class Logger<L extends LogLevels> {
    *
    *
    * @param {string} name
-   * @param {Record<string, unknown>} data
+   * @param {Record<string, unknown>} [data={}]
    * @return {LoggerWithParent<L, this>}  {LoggerWithParent<L, this>}
    * @memberof Logger
    */
-  child(name: string, data: Record<string, unknown>): LoggerWithParent<L, this> {
+  child(
+    name: string,
+    data: Record<string, unknown> = {}
+  ): LoggerWithParent<L, this> {
     return new Logger(name, this.levels, data, this) as LoggerWithParent<L, this>;
   }
 

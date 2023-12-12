@@ -1,8 +1,8 @@
-[QIWI SDK](../README.md) / [Exports](../modules.md) / Logger
+[TIE Logger](../README.md) / [Exports](../modules.md) / Logger
 
-# Class: Logger<L\>
+# Class: Logger\<L\>
 
-**`export`**
+**`Export`**
 
 ## Type parameters
 
@@ -35,17 +35,15 @@
 
 ### constructor
 
-• **new Logger**<`L`\>(`name`, `levels`, `data?`, `parent?`)
+• **new Logger**\<`L`\>(`name`, `levels`, `data?`, `parent?`): [`Logger`](Logger.md)\<`L`\>
 
 Creates an instance of Logger.
-
-**`memberof`** Logger
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `L` | extends readonly `string`[] |
+| `L` | extends [`LogLevels`](../modules.md#loglevels) |
 
 #### Parameters
 
@@ -53,8 +51,16 @@ Creates an instance of Logger.
 | :------ | :------ |
 | `name` | `string` |
 | `levels` | `L` |
-| `data?` | `Record`<`string`, `unknown`\> |
-| `parent?` | [`Logger`](Logger.md)<`L`\> |
+| `data?` | `Record`\<`string`, `unknown`\> |
+| `parent?` | [`Logger`](Logger.md)\<`L`\> |
+
+#### Returns
+
+[`Logger`](Logger.md)\<`L`\>
+
+**`Memberof`**
+
+Logger
 
 #### Defined in
 
@@ -74,7 +80,7 @@ ___
 
 ### data
 
-• **data**: `Record`<`string`, `unknown`\>
+• **data**: `Record`\<`string`, `unknown`\>
 
 #### Defined in
 
@@ -94,7 +100,7 @@ ___
 
 ### log
 
-• `Readonly` **log**: [`LogWriter`](../modules/internal_.md#logwriter)<`L`\>
+• `Readonly` **log**: [`LogWriter`](../modules/internal_.md#logwriter)\<`L`\>
 
 #### Defined in
 
@@ -114,7 +120,7 @@ ___
 
 ### parent
 
-• `Optional` `Readonly` **parent**: [`Logger`](Logger.md)<`L`\>
+• `Optional` `Readonly` **parent**: [`Logger`](Logger.md)\<`L`\>
 
 #### Defined in
 
@@ -124,19 +130,21 @@ dist/esm/logger.d.ts:27
 
 ### \_pipe
 
-▸ `Protected` **_pipe**(`log`): `void`
-
-**`memberof`** Logger
+▸ **_pipe**(`log`): `void`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `log` | [`LogObject`](../modules/internal_.md#logobject)<`L`\> \| [`LogObjectWithContext`](../modules.md#logobjectwithcontext)<`L`\> |
+| `log` | [`LogObject`](../modules/internal_.md#logobject)\<`L`\> \| [`LogObjectWithContext`](../modules.md#logobjectwithcontext)\<`L`\> |
 
 #### Returns
 
 `void`
+
+**`Memberof`**
+
+Logger
 
 #### Defined in
 
@@ -146,22 +154,24 @@ ___
 
 ### child
 
-▸ **child**(`name`, `data`): [`LoggerWithParent`](../modules/internal_.md#loggerwithparent)<`L`, [`Logger`](Logger.md)<`L`\>\>
-
-**`memberof`** Logger
+▸ **child**(`name`, `data?`): [`LoggerWithParent`](../modules/internal_.md#loggerwithparent)\<`L`, [`Logger`](Logger.md)\<`L`\>\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `name` | `string` |
-| `data` | `Record`<`string`, `unknown`\> |
+| `data?` | `Record`\<`string`, `unknown`\> |
 
 #### Returns
 
-[`LoggerWithParent`](../modules/internal_.md#loggerwithparent)<`L`, [`Logger`](Logger.md)<`L`\>\>
+[`LoggerWithParent`](../modules/internal_.md#loggerwithparent)\<`L`, [`Logger`](Logger.md)\<`L`\>\>
 
 {LoggerWithParent<L, this>}
+
+**`Memberof`**
+
+Logger
 
 #### Defined in
 
@@ -171,21 +181,23 @@ ___
 
 ### subscribe
 
-▸ **subscribe**(...`subscriptions`): [`Unsubscribe`](../modules/internal_.md#unsubscribe)
-
-**`memberof`** Logger
+▸ **subscribe**(`...subscriptions`): [`Unsubscribe`](../modules/internal_.md#unsubscribe)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `...subscriptions` | [`Subscription`](../modules/internal_.md#subscription)<[`LogObjectWithContext`](../modules.md#logobjectwithcontext)<`L`\>\>[] |
+| `...subscriptions` | [`Subscription`](../modules/internal_.md#subscription)\<[`LogObjectWithContext`](../modules.md#logobjectwithcontext)\<`L`\>\>[] |
 
 #### Returns
 
 [`Unsubscribe`](../modules/internal_.md#unsubscribe)
 
 {Unsubscribe}
+
+**`Memberof`**
+
+Logger
 
 #### Defined in
 

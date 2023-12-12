@@ -1,4 +1,4 @@
-QIWI SDK / [Exports](modules.md)
+TIE Logger / [Exports](modules.md)
 
 # Tie Logger
 
@@ -15,6 +15,7 @@ QIWI SDK / [Exports](modules.md)
 [![npm](https://img.shields.io/npm/v/tie-logger.svg)](https://npmjs.com/package/tie-logger)
 [![license MIT](https://img.shields.io/npm/l/tie-logger.svg)](https://github.com/AlexXanderGrib/tie-logger/blob/main/LICENSE.txt)
 [![Size](https://img.shields.io/bundlephobia/minzip/tie-logger)](https://bundlephobia.com/package/tie-logger)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c32597c51ac540b08a2474575ae25cbb)](https://www.codacy.com/gh/AlexXanderGrib/tie-logger/dashboard?utm_source=github.com&utm_medium=referral&utm_content=AlexXanderGrib/tie-logger&utm_campaign=Badge_Grade)
 
 ## 📦 Installation
 

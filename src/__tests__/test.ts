@@ -85,4 +85,21 @@ describe("Logger", () => {
 
     unsubscribe();
   });
+
+  test("BigInt in object", () => {
+    const logger = new Logger("bigint test", logLevels());
+
+    const unsubscribe = logger.subscribe((value) => {
+      expect(value.message.plain).toBe(
+        `This object should be serialized correctly {"string":"100000000000000000000","number":1}`
+      );
+    });
+
+    logger.log.info`This object should be serialized correctly ${{
+      string: 100_000_000_000_000_000_000n,
+      number: 1n
+    }}`;
+
+    unsubscribe();
+  });
 });

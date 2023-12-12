@@ -1,18 +1,18 @@
-[QIWI SDK](README.md) / Exports
+[TIE Logger](README.md) / Exports
 
-# QIWI SDK
+# TIE Logger
 
 ## Table of contents
 
-### Namespaces
+### Modules
 
-- [&lt;internal\&gt;](modules/internal_.md)
+- [\<internal\>](modules/internal_.md)
 
 ### Classes
 
 - [Logger](classes/Logger.md)
 
-### Type aliases
+### Type Aliases
 
 - [LogLevels](modules.md#loglevels)
 - [LogObjectWithContext](modules.md#logobjectwithcontext)
@@ -28,7 +28,7 @@
 - [filter](modules.md#filter)
 - [logLevels](modules.md#loglevels-1)
 
-## Type aliases
+## Type Aliases
 
 ### LogLevels
 
@@ -42,7 +42,7 @@ ___
 
 ### LogObjectWithContext
 
-Ƭ **LogObjectWithContext**<`L`\>: [`LogObject`](modules/internal_.md#logobject)<`L`\> & { `context`: { `name`: `string` ; `path`: `string`[]  } ; `origin`: [`Logger`](classes/Logger.md)<`L`\>  }
+Ƭ **LogObjectWithContext**\<`L`\>: [`LogObject`](modules/internal_.md#logobject)\<`L`\> & \{ `context`: \{ `name`: `string` ; `path`: `string`[]  } ; `origin`: [`Logger`](classes/Logger.md)\<`L`\>  }
 
 #### Type parameters
 
@@ -58,7 +58,7 @@ ___
 
 ### LogSubscription
 
-Ƭ **LogSubscription**<`L`\>: [`Subscription`](modules/internal_.md#subscription)<[`LogObjectWithContext`](modules.md#logobjectwithcontext)<`L`\>\>
+Ƭ **LogSubscription**\<`L`\>: [`Subscription`](modules/internal_.md#subscription)\<[`LogObjectWithContext`](modules.md#logobjectwithcontext)\<`L`\>\>
 
 #### Type parameters
 
@@ -78,6 +78,8 @@ ___
 
 #### Defined in
 
+dist/esm/levels.d.ts:1
+
 dist/esm/levels.d.ts:2
 
 ## Variables
@@ -90,19 +92,19 @@ dist/esm/levels.d.ts:2
 
 dist/esm/levels.d.ts:1
 
+dist/esm/levels.d.ts:2
+
 ## Functions
 
 ### filter
 
-▸ **filter**<`L`\>(`filter`, `level`, `subscription`): [`LogSubscription`](modules.md#logsubscription)<`L`\>
-
-**`export`**
+▸ **filter**\<`L`\>(`filter`, `level`, `subscription`): [`LogSubscription`](modules.md#logsubscription)\<`L`\>
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `L` | extends readonly `string`[] |
+| `L` | extends [`LogLevels`](modules.md#loglevels) |
 
 #### Parameters
 
@@ -110,13 +112,15 @@ dist/esm/levels.d.ts:1
 | :------ | :------ |
 | `filter` | ``">"`` \| ``"<"`` \| ``"="`` \| ``">="`` \| ``"<="`` |
 | `level` | `L`[`number`] |
-| `subscription` | [`LogSubscription`](modules.md#logsubscription)<`L`\> |
+| `subscription` | [`LogSubscription`](modules.md#logsubscription)\<`L`\> |
 
 #### Returns
 
-[`LogSubscription`](modules.md#logsubscription)<`L`\>
+[`LogSubscription`](modules.md#logsubscription)\<`L`\>
 
 {LogSubscription<L>}
+
+**`Export`**
 
 #### Defined in
 
@@ -126,15 +130,13 @@ ___
 
 ### logLevels
 
-▸ **logLevels**<`L`\>(...`levels`): [`LogLevelsDefaults`](modules/internal_.md#loglevelsdefaults)<`L`\>
-
-**`export`**
+▸ **logLevels**\<`L`\>(`...levels`): [`LogLevelsDefaults`](modules/internal_.md#loglevelsdefaults)\<`L`\>
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `L` | extends readonly `string`[] |
+| `L` | extends [`LogLevels`](modules.md#loglevels) |
 
 #### Parameters
 
@@ -144,9 +146,11 @@ ___
 
 #### Returns
 
-[`LogLevelsDefaults`](modules/internal_.md#loglevelsdefaults)<`L`\>
+[`LogLevelsDefaults`](modules/internal_.md#loglevelsdefaults)\<`L`\>
 
 {LogLevelsDefaults<L>}
+
+**`Export`**
 
 #### Defined in
 

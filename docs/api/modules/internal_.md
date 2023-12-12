@@ -1,10 +1,10 @@
-[QIWI SDK](../README.md) / [Exports](../modules.md) / <internal\>
+[TIE Logger](../README.md) / [Exports](../modules.md) / \<internal\>
 
-# Namespace: <internal\>
+# Module: \<internal\>
 
 ## Table of contents
 
-### Type aliases
+### Type Aliases
 
 - [LogLevelsDefaults](internal_.md#loglevelsdefaults)
 - [LogObject](internal_.md#logobject)
@@ -13,11 +13,11 @@
 - [Subscription](internal_.md#subscription)
 - [Unsubscribe](internal_.md#unsubscribe)
 
-## Type aliases
+## Type Aliases
 
 ### LogLevelsDefaults
 
-Ƭ **LogLevelsDefaults**<`L`\>: `L` extends readonly [] ? [`defaultLevels`](../modules.md#defaultlevels-1) : `L`
+Ƭ **LogLevelsDefaults**\<`L`\>: `L` extends readonly [] ? [`defaultLevels`](../modules.md#defaultlevels-1) : `L`
 
 #### Type parameters
 
@@ -33,7 +33,7 @@ ___
 
 ### LogObject
 
-Ƭ **LogObject**<`L`\>: `Object`
+Ƭ **LogObject**\<`L`\>: `Object`
 
 #### Type parameters
 
@@ -45,9 +45,9 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `data` | `Record`<`string`, `any`\> |
+| `data` | `Record`\<`string`, `any`\> |
 | `level` | `L`[`number`] |
-| `message` | { `parts`: `unknown`[] ; `plain`: `string` ; `template`: `string`  } |
+| `message` | \{ `parts`: `unknown`[] ; `plain`: `string` ; `template`: `string`  } |
 | `message.parts` | `unknown`[] |
 | `message.plain` | `string` |
 | `message.template` | `string` |
@@ -61,7 +61,7 @@ ___
 
 ### LogWriter
 
-Ƭ **LogWriter**<`L`\>: { readonly [key in L[number]]: Function }
+Ƭ **LogWriter**\<`L`\>: \{ readonly [key in L[number]]: Function }
 
 #### Type parameters
 
@@ -77,14 +77,14 @@ ___
 
 ### LoggerWithParent
 
-Ƭ **LoggerWithParent**<`Lv`, `Pr`\>: [`Logger`](../classes/Logger.md)<`Lv`\> & { `parent`: `Pr`  }
+Ƭ **LoggerWithParent**\<`Lv`, `Pr`\>: [`Logger`](../classes/Logger.md)\<`Lv`\> & \{ `parent`: `Pr`  }
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
 | `Lv` | extends [`LogLevels`](../modules.md#loglevels) |
-| `Pr` | extends [`Logger`](../classes/Logger.md)<`Lv`\> = [`Logger`](../classes/Logger.md)<`Lv`\> |
+| `Pr` | extends [`Logger`](../classes/Logger.md)\<`Lv`\> = [`Logger`](../classes/Logger.md)\<`Lv`\> |
 
 #### Defined in
 
@@ -94,7 +94,7 @@ ___
 
 ### Subscription
 
-Ƭ **Subscription**<`T`\>: (`value`: `T`) => `void`
+Ƭ **Subscription**\<`T`\>: (`value`: `T`) => `void`
 
 #### Type parameters
 

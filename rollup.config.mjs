@@ -1,11 +1,11 @@
 import typescript from "rollup-plugin-typescript2";
 import { builtinModules } from "module";
-import { dependencies, devDependencies } from "./package.json";
 import glob from "glob";
 import cleanup from "rollup-plugin-cleanup";
 import prettier from "rollup-plugin-prettier";
 
-import prettierConfig from "./.prettierrc.json";
+import packageJson from "./package.json" assert { type: "json" };
+import prettierConfig from "./.prettierrc.json" assert { type: "json" };
 
 /** @type {import('rollup').RollupOptions} */
 const config = {
@@ -14,7 +14,7 @@ const config = {
   ],
   external: [
     ...builtinModules,
-    ...Object.keys({ ...devDependencies, ...dependencies })
+    ...Object.keys({ ...packageJson.devDependencies, ...packageJson.dependencies })
   ],
   output: [
     {

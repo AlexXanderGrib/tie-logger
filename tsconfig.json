@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
+    "target": "ES2020",
     "module": "es2020",
     "lib": [
       "ESNext"
@@ -35,7 +35,6 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "stripInternal": true,
-    "importsNotUsedAsValues": "error"
   },
   "exclude": [
     "dist",
